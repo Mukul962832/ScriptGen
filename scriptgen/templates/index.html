@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-4xl mb-4">AI-Powered Video Script Generator</h1>
+<form method="post" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Generate Script</button>
+</form>
+
+{% if generated_script %}
+    <h2 class="mt-8 text-2xl">Generated Script:</h2>
+    <pre class="bg-gray-200 p-4 rounded">{{ generated_script }}</pre>
+{% endif %}
+{% endblock %}

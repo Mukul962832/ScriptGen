@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScriptGen</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>AI-Powered Video Script Generator</h1>
+
+        <!-- Form for prompt and file upload -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Generate Script</button>
+        </form>
+
+        {% if generated_script %}
+            <div class="generated-script">
+                <h2>Generated Script:</h2>
+                <pre>{{ generated_script }}</pre>
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
